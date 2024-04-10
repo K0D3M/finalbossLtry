@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const feedbackSchema = new mongoose.Schema({
+  UID : String,
   username:String,
   role:String, 
   satisfaction: String,

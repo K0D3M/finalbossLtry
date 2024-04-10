@@ -32,7 +32,7 @@ const AllocateProject = () => {
       };
 
       // Make POST request to backend API to add the project
-      await axios.post('http://localhost:5000/api/projects/', newProject);
+      await axios.post('http://localhost:5000/api/projects/add', newProject);
       
       // Notify user that project has been added successfully
       alert('Project added successfully!');

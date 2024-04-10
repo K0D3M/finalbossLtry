@@ -1,4 +1,5 @@
 const UserDetails = require("../Model/User_Details");
+const ResourceAllocation = require("../Model/resources_model");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
 
@@ -91,9 +92,14 @@ async function adduser(req, res) {
         text: `Dear user, welcome to our website! Click the following link change the password : http://localhost:3000/updatepassword?userId=${userId}`,
       };
   
-      // Send the email
-      await transporter.sendMail(mailOptions);
-      console.log("Welcome email sent successfully");
+      // Send email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error("Error sending email:", error);
+      } else {
+        console.log("Email sent:", info.response);
+      }
+    });
     } catch (error) {
       console.error("Error sending welcome email:", error);
       throw error; // Propagate the error to the caller
@@ -141,8 +147,20 @@ async function getSpecificUser(req, res){
   try {
     const user = await UserDetails.findOne({ email });
 
+    const resoureAllocation = await ResourceAllocation.find({ email });
+
+    console.log(resoureAllocation)
+
+    const projects = resoureAllocation.map(allocation => allocation.projectName);
+    console.log('Pro ',projects)
+
+
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
+    }
+
+    if(!resoureAllocation){
+      return res.status(404).json({ message: 'No project allocated' });
     }
 
     res.status(200).json({
@@ -150,7 +168,8 @@ async function getSpecificUser(req, res){
       firstName: user.firstname,
       lastName: user.lastname,
       email: user.email,
-      role: user.role
+      role: user.role,
+      projects: projects
     });
   } catch (error) {
     console.error('Error fetching user details:', error);

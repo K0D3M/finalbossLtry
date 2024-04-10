@@ -6,6 +6,7 @@ function GeneralFeedbackForm() {
   const [feedback, setFeedback] = useState({
     username: '',
     role: '', 
+    project : '',
     satisfaction: '',
     communication: '',
     goals: '',
@@ -17,19 +18,24 @@ function GeneralFeedbackForm() {
     improvements: ''
   });
 
+  const[project, setProject] = useState([])
+
   useEffect(() => {
     // Fetch user's name based on email stored in session storage
-    const email = sessionStorage.getItem('responseEmail');
+    const email = localStorage.getItem('Email');
     if (email) {
       Axios.get(`http://localhost:5000/api/users/userdetails/${email}`)
         .then(response => {
-          const username = response.data.firstname;
+          console.log('Response',response);
+          const username = response.data.firstName;
           const role = response.data.role; // Assuming the first name is returned by the backend
+          const project = response.data.projects;
           setFeedback(prevFeedback => ({
             ...prevFeedback,
             username: username,
-            role: role
+            role: role,          
           }));
+          setProject(project);
         })
         .catch(error => {
           console.error('Error fetching user details:', error);
@@ -39,11 +45,21 @@ function GeneralFeedbackForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // Update selected project directly
+  if (name === 'project') {
+    setFeedback({
+      ...feedback,
+      project: value
+    });
+  } else {
     setFeedback({
       ...feedback,
       [name]: value
     });
+  }
   };
+
+  console.log('Projects : ', feedback.project)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,6 +102,24 @@ function GeneralFeedbackForm() {
             required
           />
         </div>
+        <div className="form-group">
+  <label htmlFor="project">Project:</label>
+  <select
+    id="project"
+    name="project"
+    value={feedback.project} // Use the first item in the project array
+    onChange={handleChange}
+    required
+  >
+    {/* Map over the projects array to generate option elements */}
+    {project.map((project, index) => (
+       <option key={index} value={project}>
+         {project}
+       </option>
+    ))}
+  </select>
+</div>
+
         <div className="form-group">
           <label htmlFor="satisfaction">How satisfied were you with the overall experience of working on this project?</label>
           <select
