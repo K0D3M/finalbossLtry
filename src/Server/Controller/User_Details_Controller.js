@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const transporter = nodemailer.createTransport({
   service: "outlook",
   auth: {
-    user: "karthik@jmangroup.com",
+    user: "nagarajarjun@jmangroup.com",
     pass: "Jman@600113",
   },
 });
@@ -86,7 +86,7 @@ async function adduser(req, res) {
     try {
       // Construct the email message
       const mailOptions = {
-        from: "karthik@jmangroup.com",
+        from: "nagarajarjun@jmangroup.com",
         to: email,
         subject: "Welcome to Our Website!",
         text: `Dear user, welcome to our website! Click the following link change the password : http://localhost:3000/updatepassword?userId=${userId}`,
@@ -109,17 +109,21 @@ async function adduser(req, res) {
 // Function to handle password update
 async function updatePassword(req, res) {
   try {
-    const { userId, newPassword } = req.body; // Extract userId and newPassword from request body
+    console.log(' update  body :', req.body);
+    const { user_id, newPassword } = req.body; // Extract userId and newPassword from request body
 
     // Hash the new password
     const hashedPassword = await bcrypt.hash(newPassword, 10);
 
     // Find the user by userId and update the password
     await UserDetails.findOneAndUpdate(
-      { user_id: userId }, // Find user by userId
+      { user_id: user_id }, // Find user by userId
       { password: hashedPassword }, // Update password with hashedPassword
       { new: true } // Return the updated document
     );
+
+    // Log a success message after the update
+console.log('Password updated successfully for user with user ID:', user_id);
 
     // Respond with success message
     res.status(200).json({ message: "Password updated successfully" });

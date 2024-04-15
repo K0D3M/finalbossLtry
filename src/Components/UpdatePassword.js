@@ -28,14 +28,32 @@ export default function UpdatePassword() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: userId,
+          user_id: userId,
           newPassword: newPassword,
         }),
       });
   
-      if (!response.ok) {
+      if (response.ok) {
+        // Access the response body as JSON
+        const responseBody = await response.json();
+        
+        // Log the success message from the server
+        console.log('Success message:', responseBody.message);
+      
+        // Return the success message
+        return responseBody.message;
+      } else {
+        // Access the response body as JSON
+        const responseBody = await response.json();
+        
+        // Log the error message from the server
+        console.log('Error message:', responseBody.message);
+      
+        // Throw an error indicating that password update failed
         throw new Error('Failed to update password');
       }
+      
+
       
       alert('Password updated successfully.. We will redirect you to Login page')
       window.location.href = '/login'

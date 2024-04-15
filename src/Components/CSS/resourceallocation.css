@@ -1,64 +1,41 @@
-.resource-allocation-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9; /* Background color for the container */
-}
+/* resourceallocation.css */
 
-.resource-allocation-container h2 {
-  text-align: center; /* Center-align the heading */
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #19105B; /* Title color */
+.resource-allocation-container {
+  background-color: #1e1e1e; /* Dark background color */
+  color: #ffffff; /* White text color */
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .form-group {
   margin-bottom: 20px;
 }
 
-.form-group label {
+label {
   display: block;
   margin-bottom: 5px;
-  font-size: 16px;
+  color: #cccccc; /* Grey text color */
 }
 
-.form-group select,
-.form-group input[type="date"] {
+select,
+input[type="date"] {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
-.error-message {
-  color: #007bff; /* Error message color */
-  font-size: 14px;
-  margin-top: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #333333; /* Dark border color */
+  background-color: #333333; /* Dark background color for input/select */
+  color: #ffffff; /* White text color */
 }
 
 button[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  background-color: #19105B !important; /* Button background color */
-  color: white; /* Button text color */
+  padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  background-color: #4CAF50; /* Green button color */
+  color: #ffffff; /* White text color */
   cursor: pointer;
-  font-size: 16px;
 }
 
 button[type="submit"]:hover {
-  background-color: #14083B !important; /* Button background color on hover */
-}
-
-button[type="submit"]:active {
-  background-color: #0D0629 !important; /* Button background color when clicked */
-}
-
-button[type="submit"]:focus {
-  outline: none;
+  background-color: #45a049; /* Darker green color on hover */
 }

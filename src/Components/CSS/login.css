@@ -1,0 +1,78 @@
+.Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9; /* Light background color */
+  }
+  
+  .Box {
+    background-color: #ffffff; /* White background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 400px;
+  }
+  
+  .Typography {
+    color: #333333; /* Dark text color */
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    width: 100%;
+  }
+  
+  .TextField {
+    margin-bottom: 20px;
+  }
+  
+  .TextField label,
+  .TextField input {
+    color: #333333; /* Dark text color */
+  }
+  
+  .TextField input {
+    background-color: #f5f5f5; /* Lighter background */
+    border: 1px solid #cccccc; /* Light border color */
+    padding: 12px;
+    border-radius: 6px;
+  }
+  
+  .TextField input:focus {
+    border-color: #19105B; /* Custom focus border color */
+  }
+  
+  .Button {
+    background-color: #027a20; /* Green button background color */
+    color: #ffffff; /* Light text color */
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px; /* Increased padding for better clickability */
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  .Button:hover {
+    background-color: #2db433; /* Lighter shade of green on hover */
+  }
+  
+  .Link {
+    color: #027a20; /* Green link color */
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .Link:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  @media (max-width: 768px) {
+    .Box {
+      width: 80%;
+    }
+  }
+  

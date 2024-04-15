@@ -41,7 +41,8 @@ const ProjectHistory = ({ email }) => {
     useEffect(() => {
         const fetchProjectNames = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/resources/getResources/${sessionStorage.responseEmail}`);
+                const email = localStorage.getItem('Email');
+                const response = await axios.get(`http://localhost:5000/api/resources/getResources/${email}`);
                 const projects = response.data; 
                 console.log('projects', projects);
 

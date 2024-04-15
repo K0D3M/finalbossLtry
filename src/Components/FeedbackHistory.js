@@ -27,10 +27,11 @@ const FeedbackHistory = ({ email }) => {
     useEffect(() => {
       const fetchUsername = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/api/users/userdetails/${sessionStorage.responseEmail}`);
+          const email = localStorage.getItem('Email');
+          const response = await axios.get(`http://localhost:5000/api/users/userdetails/${email}`);
           setUsername(response.data.firstName);
           setRole(response.data.role);
-          console.log("UserName", response.data.firstname);
+          console.log("UserName", response.data.firstName);
           console.log("Role", response.data.role);
         } catch (error) {
           console.error('Error fetching username:', error);

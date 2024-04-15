@@ -34,7 +34,7 @@ function AdminDashboard() {
           <button className="admin-button" onClick={handleAddUser}>Add User</button>
           <button className="admin-button" onClick={handleAddProject}>Add Project</button>
           <button className="admin-button" onClick={handleResourceAllocation}>Allocate Resources</button>
-          <button className="user-button" onClick={handleLogOut}>Log Out</button>
+          <button className="admin-button" onClick={handleLogOut}>Log Out</button>
         </div>
       </div>
     </div>

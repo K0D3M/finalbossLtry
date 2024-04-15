@@ -32,6 +32,8 @@ mongoose.connect('mongodb://localhost:27017/FinalBoss', {
 app.use(bodyParser.json());
 
 app.use('/auth/adduser', Authentication_Router); // POST request for adding a new
+
+app.use('/auth/updatepassword', Authentication_Router);
 //Mount add project routes
 app.use('/api/projects', projectRoutes);
 

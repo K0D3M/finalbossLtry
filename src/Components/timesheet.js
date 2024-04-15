@@ -274,6 +274,7 @@ function Timesheet() {
     console.log(rows)
 
     return (
+        <div className="page-container">
         <div>
             <div >
                 <div><strong><h2 style={{ marginTop: '20px', fontWeight: 'bold', color: '#19105B' }}>Timesheet</h2></strong></div>
@@ -385,6 +386,7 @@ function Timesheet() {
                     <button type="button" className="btn btns1" onClick={handleSubmit}>Submit</button>
                 </div>
             </div>
+        </div>
         </div>
     );
 }

@@ -58,7 +58,8 @@ feedbackController.generalcreateFeedback = async (req, res) => {
         case 'intern':
         case 'Intern':
           console.log('Inside Intern');
-          feedbackDetails = await InternFeedback.find({ username });
+          // feedbackDetails = await InternFeedback.find({ username });
+          feedbackDetails = await generalFeedback.find({ username });
           break;
         case 'senior developer':
         case 'Senior Developer':

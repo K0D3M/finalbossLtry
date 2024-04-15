@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './CSS/login.css'
 import {
   TextField,
   Button,
@@ -63,7 +64,7 @@ export default function Login() {
     <Container>
       <Grid container spacing={3}>
         <Grid item md={6} xs={12}>
-          <img  alt="Image" style={{ width: "100%", marginTop: "13%" }} />
+          {/* <img src= alt="Image" style={{ width: "100%", marginTop: "13%" }} /> */}
         </Grid>
         <Grid item md={6} xs={12} style={{marginTop: "11.7%"}}>
           <Box
